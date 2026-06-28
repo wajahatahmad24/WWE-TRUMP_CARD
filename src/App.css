@@ -1,0 +1,164 @@
+.App {
+  min-height: 100vh;
+  padding: 24px 16px 40px;
+  text-align: center;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f8fafc;
+}
+
+.app-header {
+  margin-bottom: 20px;
+}
+
+.app-header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.app-header p {
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.game-board {
+  width: min(100%, 720px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 24px;
+  background: rgba(15, 23, 42, 0.85);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.game-turn-indicator {
+  width: 100%;
+  text-align: center;
+}
+
+.turn-player {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.turn-player-one {
+  color: #60a5fa;
+}
+
+.turn-player-two {
+  color: #f87171;
+}
+
+.game-cards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.game-card-slot {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.game-status {
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.round-result {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #f8fafc;
+}
+
+.countdown {
+  margin: 6px 0 0;
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.deck-summary {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.scoreboard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.score-bar {
+  width: 100%;
+  height: 30px;
+  border-radius: 999px;
+  background: #374151;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+  transition: width 0.4s ease-in-out;
+}
+
+.score-fill span {
+  white-space: nowrap;
+  padding: 0 10px;
+}
+
+.score-fill-red {
+  background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+}
+
+.game-over-card {
+  text-align: center;
+}
+
+.restart-button {
+  margin-top: 10px;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  background: #16a34a;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.restart-button:hover {
+  background: #15803d;
+}
+
+@media (max-width: 640px) {
+  .game-board {
+    padding: 18px;
+  }
+
+  .card-container {
+    width: min(100%, 300px);
+  }
+}
