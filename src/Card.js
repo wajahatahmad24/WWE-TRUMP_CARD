@@ -35,8 +35,16 @@ const Card = ({ wrestler, hidden, glow, onCompare, chosenStat, isPlayerOne }) =>
               return (
                 <div
                   key={stat.key}
+                  role={isSelectable ? "button" : undefined}
+                  tabIndex={isSelectable ? 0 : undefined}
                   onClick={() => {
                     if (isSelectable) {
+                      onCompare(stat.key);
+                    }
+                  }}
+                  onKeyDown={(event) => {
+                    if (isSelectable && (event.key === "Enter" || event.key === " ")) {
+                      event.preventDefault();
                       onCompare(stat.key);
                     }
                   }}

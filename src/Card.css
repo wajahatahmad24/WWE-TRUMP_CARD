@@ -1,6 +1,8 @@
 .card-container {
-  width: min(100%, 300px);
-  height: 420px;
+  width: 280px;
+  height: 390px;
+  display: flex;
+  flex-direction: column;
   border: 3px solid white;
   border-radius: 20px;
   overflow: hidden;
@@ -11,13 +13,15 @@
 
 .card-face {
   width: 100%;
-  height: 70%;
+  flex: 1 1 0;
+  min-height: 0;
 }
 
 .card-front img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .hidden-card {
@@ -32,15 +36,25 @@
 }
 
 .card-info {
-  height: 30%;
   padding: 10px;
   color: #fff;
 }
 
 .stats-grid {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
   text-align: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 6px 4px;
+  border-radius: 8px;
 }
 
 .label {
@@ -62,10 +76,13 @@
 .stat.clickable {
   cursor: pointer;
   transition: transform 0.2s, color 0.2s;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .stat.clickable:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   color: #00ffea;
 }
 
@@ -85,4 +102,37 @@
 .stat.selected-stat .value {
   color: #fff7ed;
   font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .card-container {
+    width: 230px;
+    height: 330px;
+  }
+
+  .card-info {
+    padding: 8px;
+  }
+
+  .card-name {
+    margin: 0 0 8px;
+    font-size: 1rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .stat {
+    min-height: 50px;
+  }
+
+  .label {
+    font-size: 0.63rem;
+  }
+
+  .value {
+    font-size: 0.72rem;
+  }
 }

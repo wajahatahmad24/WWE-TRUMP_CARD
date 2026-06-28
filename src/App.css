@@ -1,35 +1,42 @@
 .App {
   min-height: 100vh;
-  padding: 24px 16px 40px;
+  height: 100vh;
+  padding: 12px 12px 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   color: #f8fafc;
 }
 
 .app-header {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .app-header h1 {
   margin: 0 0 8px;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
 }
 
 .app-header p {
   margin: 0;
   color: #cbd5e1;
+  font-size: clamp(0.95rem, 2.2vw, 1rem);
 }
 
 .game-board {
-  width: min(100%, 720px);
+  width: min(100%, 760px);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding: 24px;
-  border-radius: 24px;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 20px;
   background: rgba(15, 23, 42, 0.85);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
@@ -41,7 +48,7 @@
 
 .turn-player {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: clamp(1.1rem, 3.2vw, 1.4rem);
   font-weight: 700;
 }
 
@@ -58,7 +65,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .game-card-slot {
@@ -68,7 +75,7 @@
 }
 
 .game-status {
-  min-height: 48px;
+  min-height: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -154,11 +161,29 @@
 }
 
 @media (max-width: 640px) {
-  .game-board {
-    padding: 18px;
+  .App {
+    padding: 8px 8px 10px;
   }
 
-  .card-container {
-    width: min(100%, 300px);
+  .app-header {
+    margin-bottom: 6px;
+  }
+
+  .game-board {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .deck-summary {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .score-bar {
+    height: 26px;
+  }
+
+  .score-fill span {
+    font-size: 0.72rem;
   }
 }
