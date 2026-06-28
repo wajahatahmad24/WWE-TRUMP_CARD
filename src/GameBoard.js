@@ -214,34 +214,54 @@ export default function GameBoard() {
         </h2>
       </div>
 
-      <div className="game-cards">
-        {player1Deck.length > 0 && (
-          <div className="game-card-slot">
-            <Card
-              wrestler={player1Deck[0]}
-              hidden={false}
-              onCompare={compareStat}
-              highlight={winner === "player1"}
-              isTurn={currentPlayer === "player1"}
-              isPlayerOne={true}
-              chosenStat={player1Choice}
-            />
+      <div className="game-scoreboard">
+        <div className="score-rail">
+          <span className="score-label">P1</span>
+          <div className="score-bar score-bar-blue">
+            <div className="score-fill" style={{ height: `${scorePercentages.player1}%` }}>
+              <span>{player1Score}</span>
+            </div>
           </div>
-        )}
+        </div>
 
-        {player2Deck.length > 0 && (
-          <div className="game-card-slot">
-            <Card
-              wrestler={player2Deck[0]}
-              hidden={currentPlayer === "player2" ? false : !revealOpponent}
-              onCompare={compareStat}
-              highlight={winner === "player2"}
-              isTurn={currentPlayer === "player2"}
-              isPlayerOne={false}
-              chosenStat={computerChoice}
-            />
+        <div className="game-cards">
+          {player1Deck.length > 0 && (
+            <div className="game-card-slot">
+              <Card
+                wrestler={player1Deck[0]}
+                hidden={false}
+                onCompare={compareStat}
+                highlight={winner === "player1"}
+                isTurn={currentPlayer === "player1"}
+                isPlayerOne={true}
+                chosenStat={player1Choice}
+              />
+            </div>
+          )}
+
+          {player2Deck.length > 0 && (
+            <div className="game-card-slot">
+              <Card
+                wrestler={player2Deck[0]}
+                hidden={currentPlayer === "player2" ? false : !revealOpponent}
+                onCompare={compareStat}
+                highlight={winner === "player2"}
+                isTurn={currentPlayer === "player2"}
+                isPlayerOne={false}
+                chosenStat={computerChoice}
+              />
+            </div>
+          )}
+        </div>
+
+        <div className="score-rail">
+          <span className="score-label">P2</span>
+          <div className="score-bar score-bar-red">
+            <div className="score-fill score-fill-red" style={{ height: `${scorePercentages.player2}%` }}>
+              <span>{player2Score}</span>
+            </div>
           </div>
-        )}
+        </div>
       </div>
 
       <div className="game-status">
@@ -255,25 +275,11 @@ export default function GameBoard() {
       </div>
 
       <div className="scoreboard">
-        <div className="score-bar score-bar-blue">
-          <div
-            className="score-fill"
-            style={{
-              width: `${scorePercentages.player1}%`,
-            }}
-          >
-            <span>Player 1 • {player1Score} win{player1Score === 1 ? "" : "s"}</span>
-          </div>
+        <div className="score-bar-row">
+          <span>Player 1 • {player1Score} win{player1Score === 1 ? "" : "s"}</span>
         </div>
-        <div className="score-bar score-bar-red">
-          <div
-            className="score-fill score-fill-red"
-            style={{
-              width: `${scorePercentages.player2}%`,
-            }}
-          >
-            <span>Player 2 • {player2Score} win{player2Score === 1 ? "" : "s"}</span>
-          </div>
+        <div className="score-bar-row">
+          <span>Player 2 • {player2Score} win{player2Score === 1 ? "" : "s"}</span>
         </div>
       </div>
     </div>

@@ -11,6 +11,12 @@
   perspective: 1000px;
 }
 
+.card-name {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
 .card-face {
   width: 100%;
   flex: 0 0 70%;
@@ -37,39 +43,43 @@
 
 .card-info {
   flex: 0 0 30%;
-  padding: 8px 8px 10px;
+  padding: 6px 8px 8px;
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
 }
 
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 6px;
+  gap: 4px;
   text-align: center;
+  align-items: start;
 }
 
 .stat {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 56px;
-  padding: 6px 4px;
+  justify-content: flex-start;
+  min-height: 44px;
+  padding: 4px 2px;
   border-radius: 8px;
 }
 
 .label {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: bold;
   color: #ccc;
+  line-height: 1.1;
 }
 
 .value {
-  font-size: 0.8rem;
-  margin-top: 2px;
+  font-size: 0.76rem;
+  margin-top: 1px;
+  line-height: 1.1;
 }
 
 .winner-glow {
@@ -120,29 +130,29 @@
 
   .card-info {
     flex: 0 0 28%;
-    padding: 6px;
+    padding: 4px;
   }
 
   .card-name {
-    margin: 0 0 6px;
-    font-size: 0.95rem;
+    margin: 0 0 4px;
+    font-size: 0.85rem;
   }
 
   .stats-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 4px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3px;
   }
 
   .stat {
-    min-height: 42px;
-    padding: 4px 2px;
+    min-height: 22px;
+    padding: 2px 1px;
   }
 
   .label {
-    font-size: 0.58rem;
+    font-size: 0.5rem;
   }
 
   .value {
-    font-size: 0.68rem;
+    font-size: 0.58rem;
   }
 }
