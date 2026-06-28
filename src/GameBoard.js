@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Card from "./Card";
 import { wrestlers } from "./wrestlers";
 
@@ -31,8 +31,6 @@ export function getRoundCompletionState(nextPlayer1DeckLength, nextPlayer2DeckLe
 export default function GameBoard() {
   const [player1Deck, setPlayer1Deck] = useState([]);
   const [player2Deck, setPlayer2Deck] = useState([]);
-  const [discardPile1, setDiscardPile1] = useState([]);
-  const [discardPile2, setDiscardPile2] = useState([]);
   const [revealOpponent, setRevealOpponent] = useState(false);
   const [roundResult, setRoundResult] = useState("");
   const [gameOver, setGameOver] = useState(false);
@@ -51,8 +49,6 @@ export default function GameBoard() {
     const half = Math.floor(shuffled.length / 2);
     setPlayer1Deck(shuffled.slice(0, half));
     setPlayer2Deck(shuffled.slice(half));
-    setDiscardPile1([]);
-    setDiscardPile2([]);
     setPlayer1Score(0);
     setPlayer2Score(0);
     setRevealOpponent(false);
@@ -71,7 +67,7 @@ export default function GameBoard() {
   }, []);
 
   // Compare stat — ensure numeric comparisons
-  const compareStat = (stat) => {
+  const compareStat = useCallback((stat) => {
     if (roundInProgressRef.current) return;
     if (!canStartRound(revealOpponent, countdown, gameOver)) return;
     if (player1Deck.length === 0 || player2Deck.length === 0) return;
@@ -105,19 +101,15 @@ export default function GameBoard() {
     if (p1Wins) {
       setRoundResult("Player 1 Wins!");
       setPlayer1Score((s) => s + 1);
-      setDiscardPile1((d) => [...d, p1Card, p2Card]);
       setWinner("player1");
       setCurrentPlayer("player1");
     } else if (p2Wins) {
       setRoundResult("Player 2 Wins!");
       setPlayer2Score((s) => s + 1);
-      setDiscardPile2((d) => [...d, p1Card, p2Card]);
       setWinner("player2");
       setCurrentPlayer("player2");
     } else {
       setRoundResult("It's a Tie!");
-      setDiscardPile1((d) => [...d, p1Card]);
-      setDiscardPile2((d) => [...d, p2Card]);
       setWinner("tie");
       // keep currentPlayer unchanged on tie
     }
@@ -156,7 +148,7 @@ export default function GameBoard() {
         }
       }
     }, 1000);
-  };
+  }, [player1Deck, player2Deck, player1Choice, revealOpponent, countdown, gameOver]);
 
   // Computer plays strategically when it's player2's turn
   useEffect(() => {
@@ -191,7 +183,7 @@ export default function GameBoard() {
 
       return () => clearTimeout(timer);
     }
-  }, [currentPlayer, player2Deck, revealOpponent, countdown, gameOver]);
+  }, [currentPlayer, player2Deck, revealOpponent, countdown, gameOver, compareStat]);
 
   const scorePercentages = getScorePercentages(player1Score, player2Score);
 
