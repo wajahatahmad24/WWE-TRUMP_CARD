@@ -130,29 +130,33 @@
 
   .card-info {
     flex: 0 0 28%;
-    padding: 4px;
+    padding: 3px;
   }
 
   .card-name {
-    margin: 0 0 4px;
-    font-size: 0.85rem;
+    margin: 0 0 3px;
+    font-size: 0.78rem;
+    line-height: 1;
   }
 
   .stats-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 3px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px;
   }
 
   .stat {
-    min-height: 22px;
+    min-height: 26px;
     padding: 2px 1px;
+    justify-content: center;
   }
 
   .label {
-    font-size: 0.5rem;
+    font-size: 0.46rem;
+    line-height: 0.95;
   }
 
   .value {
-    font-size: 0.58rem;
+    font-size: 0.54rem;
+    line-height: 0.95;
   }
 }
